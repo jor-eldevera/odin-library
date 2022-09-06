@@ -16,7 +16,6 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 // This function is called by the form on form submission
 function addBook() {
-    console.log("test");
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const numPages = document.getElementById("numPages");
@@ -29,6 +28,14 @@ function addBook() {
 // This prevents the page from refreshing when submit is clicked
 document.getElementById("newBookForm").onsubmit = function(e) {
     e.preventDefault();
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const numPages = document.getElementById("numPages");
+    const isRead = document.getElementById("isRead");
+    title.value = "";
+    author.value = "";
+    numPages.value = "";
+    isRead.checked = false;
 };
 
 addBookToLibrary("PODS", "Daniel Fitzgerald", "150", true);
