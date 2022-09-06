@@ -14,6 +14,23 @@ function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(newBook);
 }
 
+// This function is called by the form on form submission
+function addBook() {
+    console.log("test");
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const numPages = document.getElementById("numPages");
+    const isRead = document.getElementById("isRead");
+
+    addBookToLibrary(title.value, author.value, numPages.value, isRead.checked)
+    displayBooks();
+}
+
+// This prevents the page from refreshing when submit is clicked
+document.getElementById("newBookForm").onsubmit = function(e) {
+    e.preventDefault();
+};
+
 addBookToLibrary("PODS", "Daniel Fitzgerald", "150", true);
 addBookToLibrary("The 7 Habits of Highly Effective People", "Dale Carnegie", "160", false);
 displayBooks();
