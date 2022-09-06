@@ -25,9 +25,11 @@ function addBook() {
     displayBooks();
 }
 
-// This prevents the page from refreshing when submit is clicked
 document.getElementById("newBookForm").onsubmit = function(e) {
+    // This prevents the page from refreshing when submit is clicked
     e.preventDefault();
+
+    // This clears the inputs on submit
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const numPages = document.getElementById("numPages");
@@ -36,6 +38,8 @@ document.getElementById("newBookForm").onsubmit = function(e) {
     author.value = "";
     numPages.value = "";
     isRead.checked = false;
+
+    toggleDisplay();
 };
 
 addBookToLibrary("PODS", "Daniel Fitzgerald", "150", true);
@@ -51,6 +55,14 @@ function displayBooks() {
         if (isDisplayed === false) {
             const bookCard = document.createElement("div");
             bookCard.classList.add("bookCard");
+
+            const removeBook = document.createElement("button");
+            removeBook.innerText = "Remove";
+            bookCard.appendChild(removeBook);
+
+            const changeReadStatus = document.createElement("button");
+            changeReadStatus.innerText = "Change Read Status";
+            bookCard.appendChild(changeReadStatus);
             
             const title = document.createElement("p");
             title.classList.add("title");
@@ -66,7 +78,11 @@ function displayBooks() {
             bookCard.appendChild(pages);
     
             const isRead = document.createElement("p");
-            isRead.innerText = book.isRead;
+            if (book.isRead) {
+                isRead.innerText = "Has been read";
+            } else {
+                isRead.innerText = "Hasn't been read"
+            }
             bookCard.appendChild(isRead);
     
             bookCardContainer.appendChild(bookCard);
@@ -74,6 +90,7 @@ function displayBooks() {
     }
 }
 
+// Checks if a book is displayed
 function checkIsDisplayed(title) {
     const bookTitles = document.getElementsByClassName("title");
     for (let i = 0; i < bookTitles.length; i++) {
@@ -82,4 +99,16 @@ function checkIsDisplayed(title) {
         }
     }
     return false;
+}
+
+// Toggles display of the new book form
+function toggleDisplay() {
+    const newBookForm = document.getElementById("newBookForm");
+    if (newBookForm.style.display === "none") {
+        newBookForm.style.display = "block";
+        console.log("bing");
+      } else {
+        console.log("bong");
+        newBookForm.style.display = "none";
+      }
 }
