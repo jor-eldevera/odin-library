@@ -37,25 +37,42 @@ displayBooks();
 
 function displayBooks() {
     for (const book of myLibrary) {
-        const bookCard = document.createElement("div");
-        bookCard.classList.add("bookCard");
-        
-        const title = document.createElement("p");
-        bookCard.appendChild(title);
-        title.innerText = book.title;
-        
-        const author = document.createElement("p");
-        author.innerText = book.author;
-        bookCard.appendChild(author);
+        // First check if book is displayed
+        let isDisplayed = checkIsDisplayed(book.title);
 
-        const pages = document.createElement("p");
-        pages.innerText = book.pages;
-        bookCard.appendChild(pages);
-
-        const isRead = document.createElement("p");
-        isRead.innerText = book.isRead;
-        bookCard.appendChild(isRead);
-
-        bookCardContainer.appendChild(bookCard);
+        // If book is not displayed, add it to the page
+        if (isDisplayed === false) {
+            const bookCard = document.createElement("div");
+            bookCard.classList.add("bookCard");
+            
+            const title = document.createElement("p");
+            title.classList.add("title");
+            bookCard.appendChild(title);
+            title.innerText = book.title;
+            
+            const author = document.createElement("p");
+            author.innerText = book.author;
+            bookCard.appendChild(author);
+    
+            const pages = document.createElement("p");
+            pages.innerText = book.pages;
+            bookCard.appendChild(pages);
+    
+            const isRead = document.createElement("p");
+            isRead.innerText = book.isRead;
+            bookCard.appendChild(isRead);
+    
+            bookCardContainer.appendChild(bookCard);
+        }
     }
+}
+
+function checkIsDisplayed(title) {
+    const bookTitles = document.getElementsByClassName("title");
+    for (let i = 0; i < bookTitles.length; i++) {
+        if (title === bookTitles[i].innerText) {
+            return true;
+        }
+    }
+    return false;
 }
