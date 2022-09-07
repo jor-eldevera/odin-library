@@ -1,5 +1,7 @@
 const bookCardContainer = document.querySelector("#books");
 
+const INDEX_OF_ISREAD = 5; // Index of .isRead in the HTMLCollection returned by bookTitles[i].parentNode.children
+
 let myLibrary = [];
 
 function Book(title, author, pages, isRead) {
@@ -62,6 +64,10 @@ function displayBooks() {
 
             const changeReadStatus = document.createElement("button");
             changeReadStatus.innerText = "Change Read Status";
+            changeReadStatus.addEventListener("click", function() {
+                book.isRead = !book.isRead;
+                changeReadStatusText(book.title);
+            });
             bookCard.appendChild(changeReadStatus);
             
             const title = document.createElement("p");
@@ -83,6 +89,7 @@ function displayBooks() {
             } else {
                 isRead.innerText = "Hasn't been read"
             }
+            isRead.classList.add("isRead");
             bookCard.appendChild(isRead);
     
             bookCardContainer.appendChild(bookCard);
@@ -106,9 +113,22 @@ function toggleDisplay() {
     const newBookForm = document.getElementById("newBookForm");
     if (newBookForm.style.display === "none") {
         newBookForm.style.display = "block";
-        console.log("bing");
       } else {
-        console.log("bong");
         newBookForm.style.display = "none";
       }
+}
+
+function changeReadStatusText(title) {
+    const bookTitles = document.getElementsByClassName("title");
+    for (let i = 0; i < bookTitles.length; i++) {
+        if (title === bookTitles[i].innerText) {
+            let allChildrenOfParent = bookTitles[i].parentNode.children;
+            
+            if (allChildrenOfParent[INDEX_OF_ISREAD].innerText === "Has been read") {
+                allChildrenOfParent[INDEX_OF_ISREAD].innerText = "Hasn't been read"
+            } else {
+                allChildrenOfParent[INDEX_OF_ISREAD].innerText = "Has been read";
+            }
+        }
+    }
 }
