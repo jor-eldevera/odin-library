@@ -65,6 +65,7 @@ function displayBooks() {
                 removeBookFromDom(book.title);
                 removeBookFromArray(book.title);
             });
+            removeBook.classList.add("removeBook");
             bookCard.appendChild(removeBook);
 
             const changeReadStatus = document.createElement("button");
@@ -73,6 +74,7 @@ function displayBooks() {
                 book.isRead = !book.isRead;
                 changeReadStatusText(book.title);
             });
+            changeReadStatus.classList.add("changeReadStatus");
             bookCard.appendChild(changeReadStatus);
             
             const title = document.createElement("p");

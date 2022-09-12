@@ -2,6 +2,38 @@ input {
     display: block;
 }
 
+#newBookForm {
+    margin-bottom: 15px;
+}
+
 .bookCard {
     box-shadow: 5px 5px 5px gray;
+}
+
+button {
+    padding: 5px 15px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.newBook {
+    background-color: #3DDC97;
+    margin-bottom: 15px;
+}
+
+.removeBook {
+    background-color: #FF495C;
+}
+
+.changeReadStatus {
+    background-color: #46237A;
+    color: white;
+}
+
+#submit {
+    background-color: #256EFF;
+    color: white;
+    padding: 5px 15px;
+    border: 0;
+    border-radius: 10px;
 }
