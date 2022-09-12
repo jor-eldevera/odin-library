@@ -23,7 +23,7 @@ function addBook() {
     const numPages = document.getElementById("numPages");
     const isRead = document.getElementById("isRead");
 
-    addBookToLibrary(title.value, author.value, numPages.value, isRead.checked)
+    addBookToLibrary(title.value, author.value, numPages.value, isRead.checked);
     displayBooks();
 }
 
@@ -46,6 +46,7 @@ document.getElementById("newBookForm").onsubmit = function(e) {
 
 addBookToLibrary("PODS", "Daniel Fitzgerald", "150", true);
 addBookToLibrary("The 7 Habits of Highly Effective People", "Dale Carnegie", "160", false);
+addBookToLibrary("The Game: Penetrating the Secret Society of Pickup Artists", "Neil Strauss", "466", true);
 displayBooks();
 
 function displayBooks() {
@@ -60,6 +61,10 @@ function displayBooks() {
 
             const removeBook = document.createElement("button");
             removeBook.innerText = "Remove";
+            removeBook.addEventListener("click", function() {
+                removeBookFromDom(book.title);
+                removeBookFromArray(book.title);
+            });
             bookCard.appendChild(removeBook);
 
             const changeReadStatus = document.createElement("button");
@@ -123,7 +128,7 @@ function changeReadStatusText(title) {
     for (let i = 0; i < bookTitles.length; i++) {
         if (title === bookTitles[i].innerText) {
             let allChildrenOfParent = bookTitles[i].parentNode.children;
-            
+
             if (allChildrenOfParent[INDEX_OF_ISREAD].innerText === "Has been read") {
                 allChildrenOfParent[INDEX_OF_ISREAD].innerText = "Hasn't been read"
             } else {
@@ -131,4 +136,23 @@ function changeReadStatusText(title) {
             }
         }
     }
+}
+
+function removeBookFromDom(title) {
+    const bookTitles = document.getElementsByClassName("title");
+    for (let i = 0; i < bookTitles.length; i++) {
+        if (title === bookTitles[i].innerText) {
+            bookTitles[i].parentElement.remove();
+        }
+    }
+}
+
+function removeBookFromArray(title) {
+    let indexOfBookToRemove = -1;
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === title) {
+            indexOfBookToRemove = i;
+        }
+    }
+    myLibrary.splice(indexOfBookToRemove, 1);
 }
