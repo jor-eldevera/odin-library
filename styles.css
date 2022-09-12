@@ -16,6 +16,11 @@ input {
     box-shadow: 5px 5px 5px gray;
 }
 
+.cardButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 button {
     padding: 5px 15px;
     border: 0;

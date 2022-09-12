@@ -59,6 +59,10 @@ function displayBooks() {
             const bookCard = document.createElement("div");
             bookCard.classList.add("bookCard");
 
+            const cardButtons = document.createElement("div");
+            cardButtons.classList.add("cardButtons");
+            bookCard.appendChild(cardButtons);
+
             const removeBook = document.createElement("button");
             removeBook.innerText = "Remove";
             removeBook.addEventListener("click", function() {
@@ -66,7 +70,7 @@ function displayBooks() {
                 removeBookFromArray(book.title);
             });
             removeBook.classList.add("removeBook");
-            bookCard.appendChild(removeBook);
+            cardButtons.appendChild(removeBook);
 
             const changeReadStatus = document.createElement("button");
             changeReadStatus.innerText = "Change Read Status";
@@ -75,7 +79,7 @@ function displayBooks() {
                 changeReadStatusText(book.title);
             });
             changeReadStatus.classList.add("changeReadStatus");
-            bookCard.appendChild(changeReadStatus);
+            cardButtons.appendChild(changeReadStatus);
             
             const title = document.createElement("p");
             title.classList.add("title");
