@@ -1,6 +1,6 @@
 const bookCardContainer = document.querySelector("#books");
 
-const INDEX_OF_ISREAD = 5; // Index of .isRead in the HTMLCollection returned by bookTitles[i].parentNode.children
+const INDEX_OF_ISREAD = 4; // Index of .isRead in the HTMLCollection returned by bookTitles[i].parentNode.children
 
 let myLibrary = [];
 
