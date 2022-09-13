@@ -11,21 +11,23 @@
     <h1>de Vera Library</h1>
     
     <button class="newBook" onclick="toggleDisplay()">New Book</button>
-    <form id="newBookForm" style="display: none;">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title">
-        
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author">
-        
-        <label for="numPages">Number of Pages:</label>
-        <input type="number" name="numPages" id="numPages">
-        
-        <label for="isRead">Has this been read?</label>
-        <input type="checkbox" name="isRead" id="isRead">
-
-        <input id="submit" type="submit" onclick="addBook()" value="Submit">
-    </form>
+    <div id="formWrapper">
+        <form id="newBookForm" style="display: none;">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title">
+            
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+            
+            <label for="numPages">Number of Pages:</label>
+            <input type="number" name="numPages" id="numPages">
+            
+            <label for="isRead">Has this been read?</label>
+            <input type="checkbox" name="isRead" id="isRead">
+    
+            <input id="submit" type="submit" onclick="addBook()" value="Submit">
+        </form>
+    </div>
     <div id="books">
 
     </div>

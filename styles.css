@@ -1,9 +1,18 @@
+h1 {
+    text-align: center;
+}
+
 input {
     display: block;
 }
 
 #newBookForm {
     margin-bottom: 15px;
+    margin: 15px auto;
+}
+
+#formWrapper {
+    display: flex;
 }
 
 #books {
@@ -29,7 +38,8 @@ button {
 
 .newBook {
     background-color: #3DDC97;
-    margin-bottom: 15px;
+    margin: 15px auto;
+    display: block;
 }
 
 .removeBook {
@@ -47,4 +57,5 @@ button {
     padding: 5px 15px;
     border: 0;
     border-radius: 10px;
+    margin: 0 auto;
 }
