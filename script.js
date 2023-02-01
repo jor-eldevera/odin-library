@@ -4,11 +4,13 @@ const INDEX_OF_ISREAD = 4; // Index of .isRead in the HTMLCollection returned by
 
 let myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = Boolean(isRead);
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = Boolean(isRead);
+    }
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
